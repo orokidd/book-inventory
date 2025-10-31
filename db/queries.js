@@ -12,6 +12,7 @@ async function getAllBooks() {
       books.isbn,
       books.description,
       books.pages,
+      books.stock,
       books.image_url,
       COALESCE(ARRAY_AGG(genres.name) FILTER (WHERE genres.name IS NOT NULL), '{}') AS genres
     FROM books
