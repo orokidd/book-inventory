@@ -11,7 +11,14 @@ async function bookDetailsGet(req, res) {
     res.render("bookDetails", { book })
 }
 
+async function bookDeletePost(req, res) {
+    const bookId = req.params.bookId
+    await db.deleteBookById(bookId)
+    res.redirect("/");
+}
+
 module.exports = {
   indexGet,
-  bookDetailsGet
+  bookDetailsGet,
+  bookDeletePost,
 };

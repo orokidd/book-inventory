@@ -31,6 +31,12 @@
                         <p class="stock out-of-stock"><strong>Stock:</strong> Out of stock</p>
                 <% } %>
                         <a href="/<%= book.id %>">Details</a>
+
+                        <form action="/<%= book.id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this book?');">
+                            <button type="submit">
+                                Delete Book
+                            </button>
+                        </form>
             </div>
         </div>
     <% }); %>

@@ -49,6 +49,14 @@ async function getBookById(id) {
   return rows[0]; // since ID is unique, return the first result
 }
 
+async function deleteBookById(id) {
+  // Delete the associations first
+  await pool.query("DELETE FROM book_genres WHERE book_id = $1", [id]);
+
+  // Then delete the book itself
+  await pool.query("DELETE FROM books WHERE id = $1", [id]);
+}
+
 // Get all books by a specific genre
 async function getBooksByGenre(genreName) {
   const query = `
@@ -159,5 +167,6 @@ module.exports = {
   getAllGenres,
   getGenreWithBooks,
   addBook,
-  addGenresToBook
+  addGenresToBook,
+  deleteBookById
 };
