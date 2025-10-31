@@ -25,6 +25,30 @@ async function getAllBooks() {
   return rows;
 }
 
+async function getBookById(id) {
+  const query = `
+    SELECT
+      books.id,
+      books.title,
+      books.author,
+      books.published_year,
+      books.isbn,
+      books.description,
+      books.pages,
+      books.stock,
+      books.image_url,
+      COALESCE(ARRAY_AGG(genres.name) FILTER (WHERE genres.name IS NOT NULL), '{}') AS genres
+    FROM books
+    LEFT JOIN book_genres ON books.id = book_genres.book_id
+    LEFT JOIN genres ON book_genres.genre_id = genres.id
+    WHERE books.id = $1
+    GROUP BY books.id
+  `;
+  
+  const { rows } = await pool.query(query, [id]);
+  return rows[0]; // since ID is unique, return the first result
+}
+
 // Get all books by a specific genre
 async function getBooksByGenre(genreName) {
   const query = `
@@ -130,6 +154,7 @@ async function addGenresToBook(bookId, genreIds) {
 
 module.exports = {
   getAllBooks,
+  getBookById,
   getBooksByGenre,
   getAllGenres,
   getGenreWithBooks,
