@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- views/books.ejs or genreDetail.ejs -->
+<div class="books-list">
+    <% books.forEach(book => { %>
+        <div class="book-card">
+            <!-- <% if (book.image_url) { %>
+                <img src="<%= book.image_url %>" alt="<%= book.title %>" class="book-cover">
+            <% } else { %>
+                <div class="book-cover-placeholder">No Image</div>
+            <% } %> -->
+            
+            <div class="book-info">
+                <h3><%= book.title %></h3>
+                <p><strong>Author:</strong> <%= book.author %></p>
+                <p><strong>Published:</strong> <%= book.published_year %></p>
+                <p><%= book.description %></p>
+                <p><strong>Genres:</strong> <%= book.genres.join(', ') %></p>
+                
+                <% if (book.stock > 0) { %>
+                    <p class="stock in-stock"><strong>Stock:</strong> <%= book.stock %> available</p>
+                <% } else { %>
+                    <p class="stock out-of-stock"><strong>Stock:</strong> Out of stock</p>
+                <% } %>
+            </div>
+        </div>
+    <% }); %>
+</div>
+    </div>
+</body>
+</html>

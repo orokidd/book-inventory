@@ -12,6 +12,7 @@ async function getAllBooks() {
       books.isbn,
       books.description,
       books.pages,
+      books.image_url,
       COALESCE(ARRAY_AGG(genres.name) FILTER (WHERE genres.name IS NOT NULL), '{}') AS genres
     FROM books
     LEFT JOIN book_genres ON books.id = book_genres.book_id
@@ -76,14 +77,14 @@ async function getGenreWithBooks(genreId) {
     WHERE id = $1;
   `;
   const genreResult = await pool.query(genreQuery, [genreId]);
-  
+
   if (genreResult.rows.length === 0) {
     return null;
   }
-  
+
   const genre = genreResult.rows[0];
   const books = await getBooksByGenre(genre.name);
-  
+
   return { ...genre, books };
 }
 
@@ -91,5 +92,5 @@ module.exports = {
   getAllBooks,
   getBooksByGenre,
   getAllGenres,
-  getGenreWithBooks
+  getGenreWithBooks,
 };
