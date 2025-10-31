@@ -89,9 +89,50 @@ async function getGenreWithBooks(genreId) {
   return { ...genre, books };
 }
 
+async function addBook(bookData) {
+  const query = `
+    INSERT INTO books (title, author, published_year, isbn, description, pages, stock, image_url)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+    RETURNING *;
+  `;
+  const { rows } = await pool.query(query, [
+    bookData.title,
+    bookData.author,
+    bookData.published_year || null,
+    bookData.isbn || null,
+    bookData.description || null,
+    bookData.pages || null,
+    bookData.stock || 0,
+    bookData.image_url || null,
+  ]);
+  return rows[0];
+}
+
+async function addGenresToBook(bookId, genreIds) {
+  if (!genreIds || genreIds.length === 0) {
+    return [];
+  }
+
+  const values = genreIds.map((genreId, index) => 
+    `($1, $${index + 2})`
+  ).join(', ');
+
+  const query = `
+    INSERT INTO book_genres (book_id, genre_id)
+    VALUES ${values}
+    ON CONFLICT DO NOTHING
+    RETURNING *;
+  `;
+
+  const { rows } = await pool.query(query, [bookId, ...genreIds]);
+  return rows;
+}
+
 module.exports = {
   getAllBooks,
   getBooksByGenre,
   getAllGenres,
   getGenreWithBooks,
+  addBook,
+  addGenresToBook
 };

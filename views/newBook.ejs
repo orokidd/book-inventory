@@ -154,7 +154,7 @@
     <div class="container">
         <h1>Add New Book</h1>
         
-        <form action="/books/add" method="POST">
+        <form action="/newbook" method="POST">
             <div class="form-group">
                 <label for="title">Book Title <span class="required">*</span></label>
                 <input type="text" id="title" name="title" required placeholder="Enter book title">
@@ -204,7 +204,7 @@
                 <div class="genre-checkboxes">
                     <% genres.forEach(genre => { %>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="genres" value="<%= genre.id %>" required>
+                            <input type="checkbox" name="genres" value="<%= genre.id %>">
                             <%= genre.name %>
                         </label>
                     <% }); %>

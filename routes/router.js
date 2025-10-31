@@ -5,6 +5,8 @@ const indexController = require('../controllers/indexController')
 const newBookController = require('../controllers/newBook')
 
 router.get('/', indexController.indexGet)
+
 router.get('/newbook', newBookController.newBookGet)
+router.post('/newbook', newBookController.addBook)
 
 module.exports = router;
