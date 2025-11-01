@@ -32,6 +32,8 @@
                 <% } %>
                         <a href="/<%= book.id %>">Details</a>
 
+                        <a href="/<%= book.id %>/edit">Edit</a>
+
                         <form action="/<%= book.id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this book?');">
                             <button type="submit">
                                 Delete Book

@@ -3,16 +3,16 @@ const router = Router();
 
 const indexController = require('../controllers/indexController')
 const newBookController = require('../controllers/newBook')
+const editBookController = require('../controllers/editBook')
 
 router.get('/', indexController.indexGet)
 
-// Place literal/static routes before dynamic parameter routes so
-// `/newbook` is not captured by `/:bookId`.
 router.get('/newbook', newBookController.newBookGet)
 router.post('/newbook', newBookController.addBook)
 
-// Dynamic book routes (bookId param)
 router.get('/:bookId', indexController.bookDetailsGet)
 router.post('/:bookId/delete', indexController.bookDeletePost)
+
+router.get('/:bookId/edit', editBookController.editBookGet)
 
 module.exports = router;
