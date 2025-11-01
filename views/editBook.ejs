@@ -204,7 +204,7 @@
                 <div class="genre-checkboxes">
                     <% genres.forEach(genre => { %>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="genres" value="<%= genre.id %>" <% if (book.genres.includes(genre.name)) { %> checked <% } %>>
+                            <input type="checkbox" name="genres" value="<%= genre.name %>" <% if (book.genres.includes(genre.name)) { %> checked <% } %>>
                             <%= genre.name %>
                         </label>
                     <% }); %>

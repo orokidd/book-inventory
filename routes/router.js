@@ -14,5 +14,6 @@ router.get('/:bookId', indexController.bookDetailsGet)
 router.post('/:bookId/delete', indexController.bookDeletePost)
 
 router.get('/:bookId/edit', editBookController.editBookGet)
+router.post('/:bookId/edit', editBookController.editBookPost)
 
 module.exports = router;

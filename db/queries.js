@@ -57,6 +57,29 @@ async function deleteBookById(id) {
   await pool.query("DELETE FROM books WHERE id = $1", [id]);
 }
 
+async function updateBook(id, data) {
+  const { title, author, published_year, isbn, description, pages, stock, image_url, genres } = data;
+
+  // Update main book data
+  await pool.query(
+    `UPDATE books
+     SET title = $1, author = $2, published_year = $3, isbn = $4,
+         description = $5, pages = $6, stock = $7, image_url = $8
+     WHERE id = $9`,
+    [title, author, published_year, isbn, description, pages, stock, image_url, id]
+  );
+
+  // Update genres relation
+  await pool.query("DELETE FROM book_genres WHERE book_id = $1", [id]);
+
+  for (const genreName of genres) {
+    const genreRes = await pool.query("SELECT id FROM genres WHERE name = $1", [genreName]);
+    const genreId = genreRes.rows[0].id;
+    await pool.query("INSERT INTO book_genres (book_id, genre_id) VALUES ($1, $2)", [id, genreId]);
+  }
+}
+
+
 // Get all books by a specific genre
 async function getBooksByGenre(genreName) {
   const query = `
@@ -140,26 +163,6 @@ async function addBook(bookData) {
   return rows[0];
 }
 
-async function addGenresToBook(bookId, genreIds) {
-  if (!genreIds || genreIds.length === 0) {
-    return [];
-  }
-
-  const values = genreIds.map((genreId, index) => 
-    `($1, $${index + 2})`
-  ).join(', ');
-
-  const query = `
-    INSERT INTO book_genres (book_id, genre_id)
-    VALUES ${values}
-    ON CONFLICT DO NOTHING
-    RETURNING *;
-  `;
-
-  const { rows } = await pool.query(query, [bookId, ...genreIds]);
-  return rows;
-}
-
 module.exports = {
   getAllBooks,
   getBookById,
@@ -167,6 +170,6 @@ module.exports = {
   getAllGenres,
   getGenreWithBooks,
   addBook,
-  addGenresToBook,
-  deleteBookById
+  deleteBookById,
+  updateBook
 };
