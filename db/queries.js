@@ -122,6 +122,11 @@ async function getAllGenres() {
   return rows;
 }
 
+async function addNewGenre(genreName) {
+  const query = `INSERT INTO genres (name) VALUES ($1);`
+  await pool.query(query, [genreName])
+}
+
 // Get a single genre with all its books
 async function getGenreWithBooks(genreId) {
   const genreQuery = `
@@ -168,5 +173,6 @@ module.exports = {
   getGenreWithBooks,
   addBook,
   deleteBookById,
-  updateBook
+  updateBook,
+  addNewGenre
 };
