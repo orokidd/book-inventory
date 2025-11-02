@@ -91,16 +91,13 @@ async function getBooksByGenre(genreName) {
       books.isbn,
       books.description,
       books.pages,
+      books.stock,
+      books.image_url,
       COALESCE(ARRAY_AGG(genres.name) FILTER (WHERE genres.name IS NOT NULL), '{}') AS genres
     FROM books
     LEFT JOIN book_genres ON books.id = book_genres.book_id
     LEFT JOIN genres ON book_genres.genre_id = genres.id
-    WHERE books.id IN (
-      SELECT book_genres.book_id
-      FROM book_genres
-      JOIN genres ON book_genres.genre_id = genres.id
-      WHERE genres.name = $1
-    )
+    WHERE genres.name = $1
     GROUP BY books.id
     ORDER BY books.title;
   `;

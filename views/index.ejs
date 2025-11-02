@@ -9,15 +9,36 @@
 
 <body>
     <div class="container">
+
+        <div class="header">
+            <div class="filters">
+                <form action="/" method="GET">
+                    <select name="genreName" id="genreName" onchange="this.form.submit()">
+                        <option value="">All Genres</option>
+                        <% allGenres.forEach(genre=> { %>
+                            <option value="<%= genre.name %>" <%=selectedGenre===genre.name ? 'selected' : '' %>>
+                                <%= genre.name %>
+                            </option>
+                            <% }); %>
+                    </select>
+                    <a href="">Manage</a>
+                </form>
+            </div>
+
+            <div class="add-game-button">
+                <button><a href="/newgame">New Game</a></button>
+            </div>
+        </div>
+
         <!-- views/books.ejs or genreDetail.ejs -->
         <div class="books-list">
             <% books.forEach(book=> { %>
                 <div class="book-card">
-                    <!-- <% if (book.image_url) { %>
+                    <% if (book.image_url) { %>
                 <img src="<%= book.image_url %>" alt="<%= book.title %>" class="book-cover">
             <% } else { %>
                 <div class="book-cover-placeholder">No Image</div>
-            <% } %> -->
+            <% } %>
 
                     <div class="book-info">
                         <h3><%= book.title %></h3>
