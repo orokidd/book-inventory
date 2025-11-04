@@ -9,6 +9,7 @@
 
 <body>
     <div class="container">
+        <a href="/">Back</a>
         <a href="/genres/newgenre">New Genre</a>
         <h1>Genre List</h1>
         <div class="genre-list"></div>
@@ -16,9 +17,7 @@
 
             <div class="genre-item">
                 <%= genre.name %>
-                <form action="/genres/<%= genre.id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this genre?');">
-                    <button type="submit">Delete</button>
-                </form>
+                <a href="/genres/<%= genre.id %>/delete">Delete</a>
             </div>
 
             <% }) %>

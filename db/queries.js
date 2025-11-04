@@ -122,29 +122,42 @@ async function getAllGenres() {
   return rows;
 }
 
+async function getGenreNameById(genreId) {
+  const query = `SELECT name FROM genres WHERE id = $1;`;
+  const { rows } = await pool.query(query, [genreId]);
+  return rows.length > 0 ? rows[0].name : null;
+}
+
 async function addNewGenre(genreName) {
   const query = `INSERT INTO genres (name) VALUES ($1);`
   await pool.query(query, [genreName])
 }
 
-// Get a single genre with all its books
-async function getGenreWithBooks(genreId) {
-  const genreQuery = `
-    SELECT id, name, description
-    FROM genres
-    WHERE id = $1;
-  `;
-  const genreResult = await pool.query(genreQuery, [genreId]);
-
-  if (genreResult.rows.length === 0) {
-    return null;
-  }
-
-  const genre = genreResult.rows[0];
-  const books = await getBooksByGenre(genre.name);
-
-  return { ...genre, books };
+async function deleteGenreById(genreId) {
+  // Delete associations first
+  await pool.query("DELETE FROM book_genres WHERE genre_id = $1", [genreId]);
+  // Then delete the genre itself
+  await pool.query("DELETE FROM genres WHERE id = $1", [genreId]);
 }
+
+// Get a single genre with all its books
+// async function getGenreWithBooks(genreId) {
+//   const genreQuery = `
+//     SELECT id, name, description
+//     FROM genres
+//     WHERE id = $1;
+//   `;
+//   const genreResult = await pool.query(genreQuery, [genreId]);
+
+//   if (genreResult.rows.length === 0) {
+//     return null;
+//   }
+
+//   const genre = genreResult.rows[0];
+//   const books = await getBooksByGenre(genre.name);
+
+//   return { ...genre, books };
+// }
 
 async function addBook(bookData) {
   const query = `
@@ -170,9 +183,10 @@ module.exports = {
   getBookById,
   getBooksByGenre,
   getAllGenres,
-  getGenreWithBooks,
   addBook,
   deleteBookById,
   updateBook,
-  addNewGenre
+  addNewGenre,
+  deleteGenreById,
+  getGenreNameById
 };
