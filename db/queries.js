@@ -159,12 +159,33 @@ async function addBook(bookData) {
   return rows[0];
 }
 
+async function addGenresToBook(bookId, genreIds) {
+  if (!genreIds || genreIds.length === 0) {
+    return [];
+  }
+
+  const values = genreIds.map((genreId, index) => 
+    `($1, $${index + 2})`
+  ).join(', ');
+
+  const query = `
+    INSERT INTO book_genres (book_id, genre_id)
+    VALUES ${values}
+    ON CONFLICT DO NOTHING
+    RETURNING *;
+  `;
+
+  const { rows } = await pool.query(query, [bookId, ...genreIds]);
+  return rows;
+}
+
 module.exports = {
   getAllBooks,
   getBookById,
   getBooksByGenre,
   getAllGenres,
   addBook,
+  addGenresToBook,
   deleteBookById,
   updateBook,
   addNewGenre,
