@@ -18,6 +18,8 @@ router.get('/genres/:genreId/delete', genreController.deleteGenreGet)
 router.post('/genres/:genreId/delete', genreController.deleteGenrePost)
 
 router.get('/:bookId', indexController.bookDetailsGet)
+
+router.get('/:bookId/delete', indexController.bookDeleteGet)
 router.post('/:bookId/delete', indexController.bookDeletePost)
 
 router.get('/:bookId/edit', editBookController.editBookGet)

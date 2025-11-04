@@ -140,25 +140,6 @@ async function deleteGenreById(genreId) {
   await pool.query("DELETE FROM genres WHERE id = $1", [genreId]);
 }
 
-// Get a single genre with all its books
-// async function getGenreWithBooks(genreId) {
-//   const genreQuery = `
-//     SELECT id, name, description
-//     FROM genres
-//     WHERE id = $1;
-//   `;
-//   const genreResult = await pool.query(genreQuery, [genreId]);
-
-//   if (genreResult.rows.length === 0) {
-//     return null;
-//   }
-
-//   const genre = genreResult.rows[0];
-//   const books = await getBooksByGenre(genre.name);
-
-//   return { ...genre, books };
-// }
-
 async function addBook(bookData) {
   const query = `
     INSERT INTO books (title, author, published_year, isbn, description, pages, stock, image_url)

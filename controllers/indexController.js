@@ -27,6 +27,13 @@ async function bookDetailsGet(req, res) {
   res.render("bookDetails", { book });
 }
 
+async function bookDeleteGet(req, res) {
+    const bookId = req.params.bookId;
+    const book = await db.getBookById(bookId);
+    const bookTitle = book.title
+    res.render("deleteBook", { bookId, bookTitle })
+}
+
 async function bookDeletePost(req, res) {
   const bookId = req.params.bookId;
   await db.deleteBookById(bookId);
@@ -37,4 +44,5 @@ module.exports = {
   indexGet,
   bookDetailsGet,
   bookDeletePost,
+  bookDeleteGet
 };
