@@ -10,11 +10,43 @@ async function newGenreGet(req, res) {
   res.render("newGenre");
 }
 
-async function newGenrePost(req, res) {
-  const { genre_name } = req.body;
-  await db.addNewGenre(genre_name);
-  res.redirect("/genres");
-}
+// async function newGenrePost(req, res) {
+//   const { genre_name } = req.body;
+//   await db.addNewGenre(genre_name);
+//   res.redirect("/genres");
+// }
+
+const newGenrePost = [
+  body("genre_name")
+    .trim()
+    .notEmpty().withMessage("Genre name is required.")
+    .isLength({ max: 100 }).withMessage("Genre name must be at most 100 characters long."),
+
+  body("admin_password")
+    .trim()
+    .notEmpty().withMessage("Password is required.")
+    .custom((value) => {
+      if (value !== process.env.ADMIN_PASSWORD) {
+        throw new Error("Wrong password. Please try again.");
+      }
+      return true;
+    }),
+
+  async (req, res) => {
+    const genreName = req.body.genre_name;
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.render("newGenre", {
+        genreName,
+        errors: errors.array(),
+      });
+    }
+
+    await db.addNewGenre(genreName);
+    res.redirect("/genres");
+  },
+];
 
 async function deleteGenreGet(req, res) {
   const genreId = req.params.genreId;

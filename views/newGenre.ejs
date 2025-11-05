@@ -8,11 +8,22 @@
 <body>
     <body>
     <div class="container">
-        <h1>Add New Book</h1>
+        <h1>Add New Genre</h1>
+
+        <% if (locals.errors && locals.errors.length> 0) { %>
+            <div style="color: red;">
+                <% errors.forEach(error=> { %>
+                    <p><%= error.msg %></p>
+                    <% }) %>
+            </div>
+            <% } %>
         
         <form action="/genres/newgenre" method="POST">
             <div class="form-group">
-                <label for="genre_name">Genre name <span class="required">*</span></label>
+
+                <input type="password" name="admin_password" placeholder="Enter admin password" required>
+
+                <label for="genre_name">Genre name <span class="required"></span></label>
                 <input type="text" id="genre_name" name="genre_name" required placeholder="Enter genre name">
             </div>
 
