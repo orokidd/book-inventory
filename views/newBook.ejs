@@ -45,6 +45,7 @@
         input[type="text"],
         input[type="number"],
         input[type="url"],
+        input[type="password"],
         textarea,
         select {
             width: 100%;
@@ -154,6 +155,16 @@
     <div class="container">
         <h1>Add New Book</h1>
         
+        <div class="errors">
+            <div style="color: red; margin-bottom: 20px;">
+                <% if (locals.errors && locals.errors.length> 0) { %>
+                <% errors.forEach(error=> { %>
+                    <p><%= error.msg %></p>
+                    <% }) %>
+                </div>
+                <% } %>
+        </div>
+
         <form action="/newbook" method="POST">
             <div class="form-group">
                 <label for="title">Book Title <span class="required">*</span></label>
@@ -168,7 +179,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="published_year">Published Year</label>
-                    <input type="number" id="published_year" name="published_year" min="1000" max="2100" placeholder="e.g., 2023">
+                    <input type="number" id="published_year" name="published_year" min="0" max="2100" placeholder="e.g., 2023">
                 </div>
 
                 <div class="form-group">
@@ -209,6 +220,11 @@
                         </label>
                     <% }); %>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <label for="admin_password">Admin Password</label>
+                <input type="password" id="admin_password" name="admin_password" placeholder="Enter admin password" required>
             </div>
 
             <div class="button-group">
