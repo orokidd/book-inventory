@@ -5,6 +5,7 @@ const indexController = require('../controllers/indexController')
 const newBookController = require('../controllers/newBook')
 const editBookController = require('../controllers/editBook')
 const genreController = require('../controllers/genre')
+const deleteBookController = require('../controllers/deleteBook')
 
 router.get('/', indexController.indexGet)
 
@@ -19,8 +20,8 @@ router.post('/genres/:genreId/delete', genreController.deleteGenrePost)
 
 router.get('/:bookId', indexController.bookDetailsGet)
 
-router.get('/:bookId/delete', indexController.bookDeleteGet)
-router.post('/:bookId/delete', indexController.bookDeletePost)
+router.get('/:bookId/delete', deleteBookController.bookDeleteGet)
+router.post('/:bookId/delete', deleteBookController.bookDeletePost)
 
 router.get('/:bookId/edit', editBookController.editBookGet)
 router.post('/:bookId/edit', editBookController.editBookPost)
