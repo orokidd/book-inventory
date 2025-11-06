@@ -3,7 +3,7 @@ const { body, validationResult } = require("express-validator");
 
 async function newBookGet(req, res) {
     const genres = await db.getAllGenres();
-    res.render("newBook", { genres })
+    res.render("newBook", { genres, previous: {} })
 }
 
 // async function addBook(req, res) {
@@ -82,7 +82,7 @@ const addBook = [
 
         if (!errors.isEmpty()) {
             const allGenres = await db.getAllGenres();
-            return res.render("newBook", { genres: allGenres, errors: errors.array() });
+            return res.render("newBook", { genres: allGenres, previous: req.body, errors: errors.array() });
         }
 
         try {
@@ -98,7 +98,8 @@ const addBook = [
             });
 
             if (genres) {
-                const genreIds = Array.isArray(genres) ? genres.map((id) => parseInt(id)) : [parseInt(genres)];
+                // Convert array of genre IDs from strings to integers ["1", "2"] -> [1, 2]
+                const genreIds = Array.isArray(genres) ? genres.map((id) => parseInt(id)) : [parseInt(genres)]; 
                 await db.addGenresToBook(book.id, genreIds);
             }
 
