@@ -1,0 +1,97 @@
+/* css reset */
+/* css reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+ul,
+li,
+ol {
+  padding-left: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* own css */
+
+:root {
+  --bg: #121212;
+  --bg-alt: #1e1e1e;
+  --fg: #faf9f6;
+  --accent: #c6fbbb;
+  --gray: #979797;
+  --dark-gray: #393939;
+  --light-gray: #b2b2b2;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.site-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
