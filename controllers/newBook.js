@@ -6,37 +6,7 @@ async function newBookGet(req, res) {
     res.render("newBook", { genres, previous: {} })
 }
 
-// async function addBook(req, res) {
-//   const { title, author, published_year, isbn, description, pages, stock, image_url, genres, admin_password } = req.body;
-
-//   try {
-//     // Use the existing addBook function from queries.js
-//     const book = await db.addBook({
-//       title,
-//       author,
-//       published_year,
-//       isbn,
-//       description,
-//       pages,
-//       stock,
-//       image_url,
-//     });
-
-//     // Use the existing addGenresToBook function from queries.js
-//     if (genres) {
-//       const genreIds = Array.isArray(genres) ? genres.map((id) => parseInt(id)) : [parseInt(genres)];
-//       await db.addGenresToBook(book.id, genreIds);
-//     }
-
-//     res.redirect("/");
-//   } catch (error) {
-//     console.error("Error adding book:", error);
-//     res.status(500).send("Error adding book");
-//   }
-// }
-
 const addBook = [
-    // Validation and sanitization middleware
     body("title")
         .trim()
         .notEmpty().withMessage("Title is required.")
@@ -75,7 +45,6 @@ const addBook = [
             return true;
         }),
 
-    // Request handler
     async (req, res) => {
         const { title, author, published_year, isbn, description, pages, stock, image_url, genres } = req.body;
         const errors = validationResult(req);
@@ -115,3 +84,32 @@ module.exports = {
     newBookGet,
     addBook
 }
+
+// async function addBook(req, res) {
+//   const { title, author, published_year, isbn, description, pages, stock, image_url, genres, admin_password } = req.body;
+
+//   try {
+//     // Use the existing addBook function from queries.js
+//     const book = await db.addBook({
+//       title,
+//       author,
+//       published_year,
+//       isbn,
+//       description,
+//       pages,
+//       stock,
+//       image_url,
+//     });
+
+//     // Use the existing addGenresToBook function from queries.js
+//     if (genres) {
+//       const genreIds = Array.isArray(genres) ? genres.map((id) => parseInt(id)) : [parseInt(genres)];
+//       await db.addGenresToBook(book.id, genreIds);
+//     }
+
+//     res.redirect("/");
+//   } catch (error) {
+//     console.error("Error adding book:", error);
+//     res.status(500).send("Error adding book");
+//   }
+// }

@@ -1,7 +1,5 @@
-// queries.js
 const pool = require("./pool");
 
-// Get all books with their genres
 async function getAllBooks() {
   const query = `
     SELECT
@@ -50,10 +48,7 @@ async function getBookById(id) {
 }
 
 async function deleteBookById(id) {
-  // Delete the associations first
   await pool.query("DELETE FROM book_genres WHERE book_id = $1", [id]);
-
-  // Then delete the book itself
   await pool.query("DELETE FROM books WHERE id = $1", [id]);
 }
 
@@ -71,18 +66,6 @@ async function updateBook(id, data) {
 
   // Update genres relation
   await pool.query("DELETE FROM book_genres WHERE book_id = $1", [id]);
-
-  // Re-add genres
-  // if (genres) {
-  //   const genreIds = Array.isArray(genres) ? genres.map((genreId) => parseInt(genreId)) : [parseInt(genres)];
-  //   await addGenresToBook(id, genreIds);
-  // }
-
-  // for (const genreName of genres) {
-  //   const genreRes = await pool.query("SELECT id FROM genres WHERE name = $1", [genreName]);
-  //   const genreId = genreRes.rows[0].id;
-  //   await pool.query("INSERT INTO book_genres (book_id, genre_id) VALUES ($1, $2)", [id, genreId]);
-  // }
 }
 
 async function addGenresToBook(bookId, genreIds) {
@@ -99,7 +82,6 @@ async function addGenresToBookByNames(bookId, genreNames) {
   }
 }
 
-// Get all books by a specific genre
 async function getBooksByGenre(genreName) {
   const query = `
     SELECT
@@ -124,7 +106,6 @@ async function getBooksByGenre(genreName) {
   return rows;
 }
 
-// Get all genres
 async function getAllGenres() {
   const query = `
     SELECT 
@@ -153,9 +134,7 @@ async function addNewGenre(genreName) {
 }
 
 async function deleteGenreById(genreId) {
-  // Delete associations first
   await pool.query("DELETE FROM book_genres WHERE genre_id = $1", [genreId]);
-  // Then delete the genre itself
   await pool.query("DELETE FROM genres WHERE id = $1", [genreId]);
 }
 

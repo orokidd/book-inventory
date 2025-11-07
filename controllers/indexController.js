@@ -20,11 +20,10 @@ async function indexGet(req, res) {
   res.render("index", { books, allGenres, selectedGenre });
 }
 
-async function bookDetailsGet(req, res) {
-  const selectedBookId = req.params.bookId;
-  const book = await db.getBookById(selectedBookId);
-  res.render("bookDetails", { book });
-}
+module.exports = {
+  indexGet,
+  bookDetailsGet
+};
 
 // async function bookDeleteGet(req, res) {
 //   const bookId = req.params.bookId;
@@ -62,8 +61,3 @@ async function bookDetailsGet(req, res) {
 //     res.redirect("/");
 //   },
 // ];
-
-module.exports = {
-  indexGet,
-  bookDetailsGet
-};

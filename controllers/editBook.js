@@ -8,25 +8,7 @@ async function editBookGet(req, res) {
   res.render("editBook", { book, genres });
 }
 
-// async function editBookPost(req, res) {
-//   const bookId = req.params.bookId;
-//   let { title, author, published_year, isbn, description, pages, stock, image_url, genres } = req.body;
-
-//   if (!Array.isArray(genres)) {
-//     genres = [genres]; // in case only one checkbox is checked
-//   }
-
-//   try {
-//     await db.updateBook(bookId, { title, author, published_year, isbn, description, pages, stock, image_url, genres });
-//     res.redirect(`/${bookId}`);
-//   } catch (err) {
-//     console.error("Error updating book:", err);
-//     res.status(500).send("Error updating book");
-//   }
-// }
-
 const editBookPost = [
-    // Validation and sanitization middleware
     body("title")
         .trim()
         .notEmpty().withMessage("Title is required.")
@@ -65,7 +47,6 @@ const editBookPost = [
             return true;
         }),
 
-    // Request handler
     async (req, res) => {
         const { title, author, published_year, isbn, description, pages, stock, image_url, genres } = req.body;
         const bookId = req.params.bookId;
@@ -89,8 +70,6 @@ const editBookPost = [
             });
 
             if (genres) {
-                // Convert array of genre IDs from strings to integers ["1", "2"] -> [1, 2]
-                // const genreIds = Array.isArray(genres) ? genres.map((id) => parseInt(id)) : [parseInt(genres)];
                 await db.addGenresToBookByNames(bookId, genres);
             }
 
@@ -106,3 +85,20 @@ module.exports = {
   editBookGet,
   editBookPost,
 };
+
+// async function editBookPost(req, res) {
+//   const bookId = req.params.bookId;
+//   let { title, author, published_year, isbn, description, pages, stock, image_url, genres } = req.body;
+
+//   if (!Array.isArray(genres)) {
+//     genres = [genres]; // in case only one checkbox is checked
+//   }
+
+//   try {
+//     await db.updateBook(bookId, { title, author, published_year, isbn, description, pages, stock, image_url, genres });
+//     res.redirect(`/${bookId}`);
+//   } catch (err) {
+//     console.error("Error updating book:", err);
+//     res.status(500).send("Error updating book");
+//   }
+// }

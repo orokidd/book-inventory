@@ -10,12 +10,6 @@ async function newGenreGet(req, res) {
   res.render("newGenre");
 }
 
-// async function newGenrePost(req, res) {
-//   const { genre_name } = req.body;
-//   await db.addNewGenre(genre_name);
-//   res.redirect("/genres");
-// }
-
 const newGenrePost = [
   body("genre_name")
     .trim()
@@ -90,3 +84,9 @@ module.exports = {
   deleteGenrePost,
   deleteGenreGet,
 };
+
+// async function newGenrePost(req, res) {
+//   const { genre_name } = req.body;
+//   await db.addNewGenre(genre_name);
+//   res.redirect("/genres");
+// }
