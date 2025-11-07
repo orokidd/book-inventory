@@ -9,15 +9,7 @@
     <body>
     <div class="container">
         <h1>Add New Genre</h1>
-
-        <% if (locals.errors && locals.errors.length> 0) { %>
-            <div style="color: red;">
-                <% errors.forEach(error=> { %>
-                    <p><%= error.msg %></p>
-                    <% }) %>
-            </div>
-            <% } %>
-        
+        <%- include('./error') %>        
         <form action="/genres/newgenre" method="POST">
             <div class="form-group">
 

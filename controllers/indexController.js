@@ -17,12 +17,11 @@ async function indexGet(req, res) {
   //   const books = await db.getAllBooks();
   const allGenres = await db.getAllGenres();
 
-  res.render("index", { books, allGenres, selectedGenre });
+  res.render("./index/index", { books, allGenres, selectedGenre });
 }
 
 module.exports = {
-  indexGet,
-  bookDetailsGet
+  indexGet
 };
 
 // async function bookDeleteGet(req, res) {

@@ -11,21 +11,13 @@
     <div class="container">
         <h1>Delete Genre</h1>
         <p>Are you sure you want to delete the genre: "<%= genreName %>"?</p>
+        <%- include('./error') %>
+            <form action="/genres/<%= genreId %>/delete" method="POST">
 
-        <% if (locals.errors && locals.errors.length> 0) { %>
-            <div style="color: red;">
-                <% errors.forEach(error=> { %>
-                    <p><%= error.msg %></p>
-                    <% }) %>
-            </div>
-            <% } %>
-
-                <form action="/genres/<%= genreId %>/delete" method="POST">
-
-                    <input type="password" name="admin_password" placeholder="Enter admin password" required>
-                    <button type="submit">Yes, Delete Genre</button>
-                    <a href="/genres" class="btn-cancel">Cancel</a>
-                </form>
+                <input type="password" name="admin_password" placeholder="Enter admin password" required>
+                <button type="submit">Yes, Delete Genre</button>
+                <a href="/genres" class="btn-cancel">Cancel</a>
+            </form>
     </div>
 </body>
 
