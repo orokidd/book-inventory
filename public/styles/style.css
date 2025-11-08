@@ -146,7 +146,7 @@ body {
     background-color: var(--darker-gray);
 }
 
-.add-game-link {
+.add-book-link {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -158,11 +158,11 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.add-game-link svg {
+.add-book-link svg {
     stroke: var(--bg);
 }
 
-.add-game-link:hover {
+.add-book-link:hover {
     background-color: var(--accent-darker);
 }
 
@@ -229,8 +229,19 @@ body {
     padding: 16px;
 }
 
-.action-delete {
-    flex:1;
+.book-actions a {
+    display: inline-flex;
+}
 
+.book-actions svg {
+    transition: stroke 0.3s;
+}
+
+.book-actions a:hover svg {
+    stroke: var(--accent);
+}
+
+.action-delete {
+    flex: 1;
     padding-left: 12px;
 }
