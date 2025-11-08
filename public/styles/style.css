@@ -126,6 +126,14 @@ body {
     gap: 12px;
 }
 
+.filter-form select {
+    background-color: var(--dark-gray);
+    color: var(--fg);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+}
+
 .edit-genre-button {
     color: var(--accent);
     background-color: var(--dark-gray);
