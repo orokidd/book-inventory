@@ -71,9 +71,25 @@ a {
   --light-gray: #b2b2b2;
 }
 
+@font-face {
+    font-family: jost;
+    src: url('/fonts/jost-variable.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: playfair;
+    src: url('/fonts/playfair-variable.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: quicksand;
+    src: url('/fonts/quicksand-variable.ttf') format('truetype');
+}
+
 body {
     background-color: var(--bg);
     color: var(--fg);
+    font-family: quicksand, sans-serif;
 }
 
 .container {
@@ -123,10 +139,43 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 40px;
+
+    /* padding: 40px;
+    background-color: var(--bg-alt);
+    border-radius: 12px; */
+}
+
+.book-card {
+    background-color: var(--bg-alt);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .book-card img {
     width: 100%;
-    height: 380px;
+    height: 320px;
     object-fit: cover;
+}
+
+.book-info {
+    padding: 16px;
+}
+
+.book-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-author {
+    color: var(--light-gray);
+    padding-top: 8px;
+    font-size: 1rem;
+}
+
+.book-actions  {
+    padding: 16px;
 }
