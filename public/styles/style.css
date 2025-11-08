@@ -177,5 +177,12 @@ body {
 }
 
 .book-actions  {
+    display: flex;
     padding: 16px;
+}
+
+.action-delete {
+    flex:1;
+
+    padding-left: 12px;
 }
