@@ -1,0 +1,177 @@
+/* css reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+ul,
+li,
+ol {
+  padding-left: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* own css */
+
+:root {
+  --bg: #121212;
+  --bg-alt: #1e1e1e;
+  --fg: #faf9f6;
+  --accent: #c6fbbb;
+  --accent-darker: #9bc593;
+  --gray: #979797;
+  --dark-gray: #393939;
+  --darker-gray: #2c2c2c;
+  --light-gray: #b2b2b2;
+}
+
+@font-face {
+  font-family: jost;
+  src: url("/fonts/jost-variable.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: playfair;
+  src: url("/fonts/playfair-variable.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: quicksand;
+  src: url("/fonts/quicksand-variable.ttf") format("truetype");
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: quicksand, sans-serif;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.site-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.book-container {
+  margin: 50px auto;
+  background-color: var(--bg-alt);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  gap: 30px;
+}
+
+.book-image {
+  flex: 1;
+}
+
+.book-image img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.book-info {
+  flex: 2;
+}
+
+.book-info h1 {
+  margin-top: 0;
+}
+
+.genres {
+  margin: 10px 0;
+}
+
+.genre-badge {
+  display: inline-block;
+  background-color: var(--accent);
+  color: var(--bg);
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-right: 5px;
+  font-size: 0.9em;
+}
+
+.description {
+  margin: 20px 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+  .book-container {
+    flex-direction: column;
+  }
+}

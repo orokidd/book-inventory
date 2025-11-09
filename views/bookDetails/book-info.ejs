@@ -1,0 +1,24 @@
+<div class="book-info">
+  <h1><%= book.title %></h1>
+  <p><strong>Author:</strong> <%= book.author %></p>
+  <p><strong>Published Year:</strong> <%= book.published_year %></p>
+  <p><strong>ISBN:</strong> <%= book.isbn %></p>
+  <p><strong>Pages:</strong> <%= book.pages %></p>
+  <p><strong>In Stock:</strong> <%= book.stock %></p>
+
+  <div class="genres">
+    <strong>Genres:</strong>
+    <% if (book.genres && book.genres.length> 0) { %> <% book.genres.forEach(genre=> { %>
+    <span class="genre-badge"> <%= genre %> </span>
+    <% }) %> <% } else { %>
+    <span>None</span>
+    <% } %>
+  </div>
+
+  <div class="description">
+    <p><strong>Description:</strong></p>
+    <p><%= book.description || "No description available." %></p>
+  </div>
+
+  <a href="/" class="back-link">← Back to book list</a>
+</div>
