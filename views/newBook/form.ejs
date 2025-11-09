@@ -1,11 +1,11 @@
 <form action="/newbook" method="POST">
   <div class="form-group">
-    <label for="title">Book Title <span class="required">*</span></label>
+    <label for="title">Book Title</label>
     <input type="text" id="title" name="title" required placeholder="Enter book title" value="<%= previous ? previous.title : '' %>" />
   </div>
 
   <div class="form-group">
-    <label for="author">Author <span class="required">*</span></label>
+    <label for="author">Author</label>
     <input type="text" id="author" name="author" required placeholder="Enter author name" value="<%= previous ? previous.author : '' %>" />
   </div>
 
@@ -33,7 +33,7 @@
     </div>
 
     <div class="form-group">
-      <label for="stock">Stock <span class="required">*</span></label>
+      <label for="stock">Stock</label>
       <input type="number" id="stock" name="stock" min="0" value="<%= previous ? previous.stock : 0 %>" required />
     </div>
   </div>
@@ -44,7 +44,7 @@
   </div>
 
   <div class="form-group">
-    <label>Genres <span class="required">*</span> (select at least one)</label>
+    <label>Genres</label>
     <div class="genre-checkboxes">
       <% genres.forEach(genre => { %>
       <label class="checkbox-label">

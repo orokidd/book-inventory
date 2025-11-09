@@ -233,14 +233,22 @@ body {
 }
 
 .book-actions svg {
+    stroke: var(--fg);
     transition: stroke 0.3s;
 }
 
-.book-actions a:hover svg {
+.book-actions a:hover svg, .book-actions button:hover svg {
     stroke: var(--accent);
 }
 
 .action-delete {
     flex: 1;
     padding-left: 12px;
+}
+
+.action-delete button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
 }

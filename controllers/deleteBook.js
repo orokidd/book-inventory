@@ -22,19 +22,22 @@ const bookDeletePost = [
   async (req, res) => {
     const bookId = req.params.bookId;
     const book = await db.getBookById(bookId);
-    const bookTitle = book.title;
+    const allBooks = await db.getAllBooks();
+    const allGenres = await db.getAllGenres();
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.render("deleteBook", {
-        bookId,
-        bookTitle,
+      return res.render("./index/index", {
+        books: allBooks,
+        allGenres,
+        showDeleteModal: true,
         errors: errors.array(),
+        selectedGenre: "",
       });
     }
 
     await db.deleteBookById(bookId);
-    res.redirect("/");
+    res.redirect("./index/index");
   },
 ];
 

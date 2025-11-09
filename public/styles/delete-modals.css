@@ -1,0 +1,86 @@
+:root {
+  --bg: #121212;
+  --bg-alt: #1e1e1e;
+  --fg: #faf9f6;
+  --accent: #c6fbbb;
+  --accent-darker: #9bc593;
+  --gray: #979797;
+  --dark-gray: #393939;
+  --darker-gray: #2c2c2c;
+  --light-gray: #b2b2b2;
+}
+
+@font-face {
+    font-family: quicksand;
+    src: url('/fonts/quicksand-variable.ttf') format('truetype');
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: quicksand, sans-serif;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: var(--bg-alt);
+  padding: 3rem;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 480px;
+}
+
+#bookName {
+    font-weight: bold;
+}
+
+#deleteForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+#password-input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--dark-gray);
+    background: var(--bg);
+    color: var(--fg);
+}
+
+#password-input:focus {
+    outline: none;
+    /* border-color: var(--accent); */
+}
+
+.btn-delete {
+  background: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.btn-cancel {
+  background: #aaa;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}

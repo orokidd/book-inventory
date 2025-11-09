@@ -1,0 +1,67 @@
+<form action="/<%= book.id %>/edit" method="POST">
+  <div class="form-group">
+    <label for="title">Book Title</label>
+    <input type="text" id="title" name="title" required placeholder="Enter book title" value="<%= book.title %>" />
+  </div>
+
+  <div class="form-group">
+    <label for="author">Author</label>
+    <input type="text" id="author" name="author" required placeholder="Enter author name" value="<%= book.author %>" />
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="published_year">Published Year</label>
+      <input type="number" id="published_year" name="published_year" min="1000" max="2100" placeholder="e.g., 2023" value="<%= book.published_year %>" />
+    </div>
+
+    <div class="form-group">
+      <label for="isbn">ISBN</label>
+      <input type="text" id="isbn" name="isbn" placeholder="e.g., 978-0451524935" value="<%= book.isbn %>" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea id="description" name="description" placeholder="Enter book description"><%= book.description %></textarea>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="pages">Pages</label>
+      <input type="number" id="pages" name="pages" min="1" placeholder="e.g., 300" value="<%= book.pages %>" />
+    </div>
+
+    <div class="form-group">
+      <label for="stock">Stock</label>
+      <input type="number" id="stock" name="stock" min="0" required value="<%= book.stock %>" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="image_url">Image URL</label>
+    <input type="url" id="image_url" name="image_url" placeholder="https://example.com/book-cover.jpg" value="<%= book.image_url %>" />
+  </div>
+
+  <div class="form-group">
+    <label>Genres</label>
+    <div class="genre-checkboxes">
+      <% genres.forEach(genre => { %>
+      <label class="checkbox-label">
+        <input type="checkbox" name="genres" value="<%= genre.name %>" <% if (book.genres.includes(genre.name)) { %> checked <% } %>>
+        <%= genre.name %>
+      </label>
+      <% }); %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="admin_password">Admin Password</label>
+    <input type="password" id="admin_password" name="admin_password" placeholder="Enter admin password" required />
+  </div>
+
+  <div class="button-group">
+    <button type="submit">Add Book</button>
+    <a href="/" class="btn-cancel">Cancel</a>
+  </div>
+</form>

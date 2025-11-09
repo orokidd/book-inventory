@@ -156,7 +156,8 @@ select {
   border: 2px solid var(--dark-gray);
   border-radius: 8px;
   font-size: 14px;
-  color: var(--gray);
+  color: var(--light-gray);
+  font-weight: 500;
   transition: border-color 0.3s ease;
 }
 
@@ -233,10 +234,6 @@ button[type="submit"]:hover {
 
 .btn-cancel:hover {
   background-color: var(--darker-gray);
-}
-
-.required {
-  color: red;
 }
 
 .image-preview {
