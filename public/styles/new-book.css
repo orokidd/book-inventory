@@ -1,0 +1,252 @@
+/* css reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+ul,
+li,
+ol {
+  padding-left: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove up and down arrow in number input */
+/* For Chrome, Safari, Edge, and other WebKit browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* own css */
+
+:root {
+  --bg: #121212;
+  --bg-alt: #1e1e1e;
+  --fg: #faf9f6;
+  --accent: #c6fbbb;
+  --accent-darker: #9bc593;
+  --gray: #979797;
+  --dark-gray: #393939;
+  --darker-gray: #2c2c2c;
+  --light-gray: #b2b2b2;
+}
+
+@font-face {
+  font-family: jost;
+  src: url("/fonts/jost-variable.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: playfair;
+  src: url("/fonts/playfair-variable.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: quicksand;
+  src: url("/fonts/quicksand-variable.ttf") format("truetype");
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: quicksand, sans-serif;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.site-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.form-container {
+  background-color: var(--bg-alt);
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--gray);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--bg-alt);
+  border: 2px solid var(--dark-gray);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--gray);
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.genre-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: var(--bg-alt);
+  border: 2px solid var(--dark-gray);
+}
+
+.checkbox-label {
+  display: flex;
+  gap: 8px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+button[type="submit"] {
+  background-color: var(--accent);
+  color: var(--dark-gray);
+  padding: 12px 30px;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--accent-darker);
+}
+
+.btn-cancel {
+  background-color: var(--dark-gray);
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 24px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background-color: var(--darker-gray);
+}
+
+.required {
+  color: red;
+}
+
+.image-preview {
+  margin-top: 10px;
+  max-width: 200px;
+  display: none;
+}
+
+.image-preview img {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
