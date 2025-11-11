@@ -97,3 +97,7 @@ body {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.btn-confirm {
+  margin-top: 12px;
+}

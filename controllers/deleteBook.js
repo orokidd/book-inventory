@@ -37,7 +37,7 @@ const bookDeletePost = [
     }
 
     await db.deleteBookById(bookId);
-    res.redirect("./index/index");
+    res.redirect("/");
   },
 ];
 
