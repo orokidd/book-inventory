@@ -3,11 +3,11 @@ const { body, validationResult } = require("express-validator");
 
 async function genreGet(req, res) {
   const genres = await db.getAllGenres();
-  res.render("genres", { genres });
+  res.render("./genres/genres", { genres });
 }
 
 async function newGenreGet(req, res) {
-  res.render("newGenre");
+  res.render("./genres/newGenre");
 }
 
 const newGenrePost = [

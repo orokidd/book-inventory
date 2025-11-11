@@ -21,7 +21,6 @@ router.post('/genres/:genreId/delete', genreController.deleteGenrePost)
 
 router.get('/:bookId', detailsBookController.bookDetailsGet)
 
-router.get('/:bookId/delete', deleteBookController.bookDeleteGet)
 router.post('/:bookId/delete', deleteBookController.bookDeletePost)
 
 router.get('/:bookId/edit', editBookController.editBookGet)
