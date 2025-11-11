@@ -3,7 +3,7 @@ const { body, validationResult } = require("express-validator");
 
 async function genreGet(req, res) {
   const genres = await db.getAllGenres();
-  res.render("./genres/genres", { genres });
+  res.render("./genres/genres", { genres, showDeleteFailedModal: false });
 }
 
 async function newGenreGet(req, res) {
@@ -42,12 +42,6 @@ const newGenrePost = [
   },
 ];
 
-async function deleteGenreGet(req, res) {
-  const genreId = req.params.genreId;
-  const genreName = await db.getGenreNameById(genreId);
-  res.render("deleteGenre", { genreName, genreId });
-}
-
 const deleteGenrePost = [
   body("admin_password")
     .trim()
@@ -61,13 +55,13 @@ const deleteGenrePost = [
 
   async (req, res) => {
     const genreId = req.params.genreId;
-    const genreName = await db.getGenreNameById(genreId);
+    const allGenres = await db.getAllGenres();
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.render("deleteGenre", {
-        genreId,
-        genreName,
+      return res.render("./genres/genres", {
+        genres: allGenres,
+        showDeleteFailedModal: true,
         errors: errors.array(),
       });
     }
@@ -82,11 +76,4 @@ module.exports = {
   newGenreGet,
   newGenrePost,
   deleteGenrePost,
-  deleteGenreGet,
 };
-
-// async function newGenrePost(req, res) {
-//   const { genre_name } = req.body;
-//   await db.addNewGenre(genre_name);
-//   res.redirect("/genres");
-// }

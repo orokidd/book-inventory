@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/style.css" />
     <link rel="stylesheet" href="/styles/delete-modals.css" />
-    
+
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <%- include('../header') %>
+      <%- include('../header') %>
 
-        <div class="main-content">
-            <div class="main-content-header">
-                <%- include('./filter') %>
-                <%- include('./add-book-button') %>
-            </div>
-            <%- include('./bookCards') %>
+      <div class="main-content">
+        <div class="main-content-header">
+            <%- include('./filter') %> 
+            <%- include('./add-book-button') %>
         </div>
+        <%- include('./bookCards') %>
+      </div>
     </div>
-    <%- include('../modals/delete-modals') %>
-    <% if (showDeleteFailedModal) { %>
-      <%- include('../modals/delete-failed') %>
+
+    <%- include('../modals/delete-modals') %> 
+    <% if (showDeleteFailedModal) { %> 
+        <%- include('../modals/delete-failed') %> 
     <% } %>
 
-
-<script defer src="/scripts/modal.js"></script>
-</body>
+    <script defer src="/scripts/modal.js"></script>
+  </body>
 </html>

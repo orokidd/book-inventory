@@ -16,7 +16,6 @@ router.post('/newbook', newBookController.addBook)
 router.get('/genres', genreController.genreGet)
 router.get('/genres/newgenre', genreController.newGenreGet)
 router.post('/genres/newgenre', genreController.newGenrePost)
-router.get('/genres/:genreId/delete', genreController.deleteGenreGet)
 router.post('/genres/:genreId/delete', genreController.deleteGenrePost)
 
 router.get('/:bookId', detailsBookController.bookDetailsGet)
