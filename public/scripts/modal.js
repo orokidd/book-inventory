@@ -19,3 +19,8 @@ cancelBtn.addEventListener('click', () => {
 window.addEventListener('click', (e) => {
   if (e.target === modal) modal.style.display = 'none';
 });
+
+function closeDeleteFailedModal() {
+  const failedModal = document.getElementById('deleteFailedModal');
+  failedModal.style.display = 'none';
+}

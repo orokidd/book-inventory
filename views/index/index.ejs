@@ -23,6 +23,9 @@
         </div>
     </div>
     <%- include('../modals/delete-modals') %>
+    <% if (showDeleteFailedModal) { %>
+      <%- include('../modals/delete-failed') %>
+    <% } %>
 
 
 <script defer src="/scripts/modal.js"></script>

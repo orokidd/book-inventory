@@ -30,7 +30,7 @@ const bookDeletePost = [
       return res.render("./index/index", {
         books: allBooks,
         allGenres,
-        showDeleteModal: true,
+        showDeleteFailedModal: true,
         errors: errors.array(),
         selectedGenre: "",
       });

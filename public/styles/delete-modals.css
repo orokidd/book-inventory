@@ -34,6 +34,19 @@ body {
   z-index: 999;
 }
 
+.failed-modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
 .modal-content {
   background: var(--bg-alt);
   padding: 3rem;
@@ -66,7 +79,7 @@ body {
     /* border-color: var(--accent); */
 }
 
-.btn-delete {
+.btn-delete{
   background: #d9534f;
   color: white;
   border: none;
@@ -76,7 +89,7 @@ body {
   margin-right: 8px;
 }
 
-.btn-cancel {
+.btn-cancel, .btn-confirm  {
   background: #aaa;
   color: white;
   border: none;
