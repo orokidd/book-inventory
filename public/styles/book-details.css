@@ -141,6 +141,12 @@ body {
   margin-top: 0;
 }
 
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+}
+
 .genres {
   margin: 10px 0;
 }
