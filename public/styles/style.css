@@ -223,9 +223,26 @@ body {
     font-size: 1rem;
 }
 
+.book-genres {
+    margin-top: 8px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.book-genre {
+    display: flex;
+    align-items: center;
+    background-color: var(--darker-gray);
+    color: var(--gray);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 0.7rem;
+}
+
 .book-actions  {
     display: flex;
-    padding: 16px;
+    padding: 4px 16px 16px 16px;
 }
 
 .book-actions a {

@@ -12,7 +12,11 @@
       <div class="book-info">
         <h3 class="book-title"><%= book.title %></h3>
         <p class="book-author"><%= book.author %></p>
-        <!-- <p><strong>Genres:</strong> <%= book.genres.join(', ') %></p> -->
+        <div class="book-genres">
+          <% book.genres.forEach(genre => { %>
+            <span class="book-genre"><%= genre %></span>
+          <% }) %>
+        </div>
       </div>
 
       <div class="book-actions">    

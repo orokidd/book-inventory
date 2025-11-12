@@ -98,8 +98,8 @@ async function getBooksByGenre(genreName) {
     FROM books
     LEFT JOIN book_genres ON books.id = book_genres.book_id
     LEFT JOIN genres ON book_genres.genre_id = genres.id
-    WHERE genres.name = $1
     GROUP BY books.id
+    HAVING $1 = ANY(ARRAY_AGG(genres.name))
     ORDER BY books.title;
   `;
   const { rows } = await pool.query(query, [genreName]);
