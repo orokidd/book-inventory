@@ -3,9 +3,12 @@ const { body, validationResult } = require("express-validator");
 
 async function editBookGet(req, res) {
   const selectedBookId = req.params.bookId;
+  const sourcePage = req.query.from;
+  
   const book = await db.getBookById(selectedBookId);
   const genres = await db.getAllGenres();
-  res.render("./editBook/editBook", { book, genres });
+
+  res.render("./editBook/editBook", { book, genres, sourcePage });
 }
 
 const editBookPost = [

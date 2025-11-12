@@ -1,5 +1,4 @@
 - add genre list on individual book cards
-- add delete and edit buttons on book details
 - new genre page and style
 - refactor css banyak repetition
 - tambah footer github
