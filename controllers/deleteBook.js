@@ -14,12 +14,21 @@ const bookDeletePost = [
 
   async (req, res) => {
     const bookId = req.params.bookId;
-    const book = await db.getBookById(bookId);
-    const allBooks = await db.getAllBooks();
-    const allGenres = await db.getAllGenres();
     const errors = validationResult(req);
+    const sourcePage = req.query.from;
 
     if (!errors.isEmpty()) {
+      if (sourcePage === "details") {
+        const book = await db.getBookById(bookId);
+        return res.render("./bookDetails/bookDetails", {
+          book,
+          showDeleteFailedModal: true,
+          errors: errors.array(),
+        });
+      }
+
+      const allBooks = await db.getAllBooks();
+      const allGenres = await db.getAllGenres();
       return res.render("./index/index", {
         books: allBooks,
         allGenres,

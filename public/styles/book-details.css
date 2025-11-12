@@ -167,7 +167,7 @@ body {
   padding: 20px 0;
 }
 
-.back-button {
+.action-buttons {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;

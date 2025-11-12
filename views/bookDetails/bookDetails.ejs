@@ -2,17 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= book.title %> - Details</title>
     <link rel="stylesheet" href="/styles/book-details.css" />
+    <link rel="stylesheet" href="/styles/delete-modals.css" />
   </head>
   <body>
     <div class="container">
       <%- include('../header') %>
       <div class="book-container">
-        <%- include('./book-image') %>
+        <%- include('./book-image') %> 
         <%- include('./book-info') %>
       </div>
     </div>
+
+    <%- include('../modals/delete-modals') %> 
+    <% if (showDeleteFailedModal) { %> 
+      <%- include('../modals/delete-failed') %> 
+    <% } %>
+    <script src="/scripts/modal.js"></script>
   </body>
 </html>
