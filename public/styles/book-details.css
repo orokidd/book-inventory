@@ -134,6 +134,8 @@ body {
 }
 
 .book-info {
+  display: flex;
+  flex-direction: column;
   flex: 2;
 }
 
@@ -162,18 +164,27 @@ body {
 }
 
 .description {
-  margin: 20px 0;
+  padding: 20px 0;
+}
+
+.back-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-grow: 1;
 }
 
 .back-link {
-  display: inline-block;
-  margin-top: 15px;
+  padding: 10px;
   color: var(--accent);
+  background-color: var(--dark-gray);
+  border-radius: 50%;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .back-link:hover {
-  text-decoration: underline;
+  background-color: var(--darker-gray);
 }
 
 @media screen and (max-width: 600px) {
