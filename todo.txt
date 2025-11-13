@@ -1,3 +1,2 @@
-- new genre page
 - refactor css banyak repetition
 - tambah footer github
