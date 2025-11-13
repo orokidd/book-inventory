@@ -31,7 +31,7 @@ const newGenrePost = [
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.render("newGenre", {
+      return res.render("genres/newGenre", {
         genreName,
         errors: errors.array(),
       });
