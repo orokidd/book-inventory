@@ -113,3 +113,20 @@ body {
   height: 40px;
   border-radius: 50%;
 }
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0 20px 0;
+  color: var(--gray);
+}
+
+footer a {
+  color: var(--accent);
+  transition: all 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--accent-darker);
+}
