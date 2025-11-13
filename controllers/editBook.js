@@ -8,7 +8,7 @@ async function editBookGet(req, res) {
   const book = await db.getBookById(selectedBookId);
   const genres = await db.getAllGenres();
 
-  res.render("./editBook/editBook", { book, genres, sourcePage });
+  res.render("./edit-book/edit-book", { book, genres, sourcePage });
 }
 
 const editBookPost = [
@@ -57,7 +57,7 @@ const editBookPost = [
 
         if (!errors.isEmpty()) {
             const allGenres = await db.getAllGenres();
-            return res.render("./editBook/editBook", { book: req.body, genres: allGenres, errors: errors.array() });
+            return res.render("./edit-book/edit-book", { book: req.body, genres: allGenres, errors: errors.array() });
         }
 
         try {

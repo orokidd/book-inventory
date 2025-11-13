@@ -13,7 +13,6 @@ async function indexGet(req, res) {
     books = await db.getAllBooks();
   }
 
-  //   const books = await db.getAllBooks();
   const allGenres = await db.getAllGenres();
 
   res.render("./index/index", { books, allGenres, selectedGenre, showDeleteFailedModal: false });

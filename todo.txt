@@ -1,2 +1,1 @@
-- refactor css banyak repetition
 - tambah footer github

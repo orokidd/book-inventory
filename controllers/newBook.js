@@ -3,7 +3,7 @@ const { body, validationResult } = require("express-validator");
 
 async function newBookGet(req, res) {
     const genres = await db.getAllGenres();
-    res.render("./newBook/newBook", { genres, previous: {} })
+    res.render("./new-book/new-book", { genres, previous: {} })
 }
 
 const addBook = [
@@ -51,7 +51,7 @@ const addBook = [
 
         if (!errors.isEmpty()) {
             const allGenres = await db.getAllGenres();
-            return res.render("./newBook/newBook", { genres: allGenres, previous: req.body, errors: errors.array() });
+            return res.render("./new-book/new-book", { genres: allGenres, previous: req.body, errors: errors.array() });
         }
 
         try {

@@ -7,7 +7,7 @@ async function genreGet(req, res) {
 }
 
 async function newGenreGet(req, res) {
-  res.render("./genres/newGenre");
+  res.render("./genres/new-genre");
 }
 
 const newGenrePost = [
@@ -31,7 +31,7 @@ const newGenrePost = [
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.render("genres/newGenre", {
+      return res.render("genres/new-genre", {
         genreName,
         errors: errors.array(),
       });

@@ -20,7 +20,7 @@ const bookDeletePost = [
     if (!errors.isEmpty()) {
       if (sourcePage === "details") {
         const book = await db.getBookById(bookId);
-        return res.render("./bookDetails/bookDetails", {
+        return res.render("./book-details/book-details", {
           book,
           showDeleteFailedModal: true,
           errors: errors.array(),
