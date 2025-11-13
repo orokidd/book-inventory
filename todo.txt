@@ -1,4 +1,3 @@
-- add genre list on individual book cards
-- new genre page and style
+- new genre page
 - refactor css banyak repetition
 - tambah footer github
