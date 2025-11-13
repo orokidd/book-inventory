@@ -4,7 +4,8 @@ const { body, validationResult } = require("express-validator");
 const bookDeletePost = [
   body("admin_password")
     .trim()
-    .notEmpty().withMessage("Password is required.")
+    .notEmpty()
+    .withMessage("Password is required.")
     .custom((value) => {
       if (value !== process.env.ADMIN_PASSWORD) {
         throw new Error("Wrong password. Please try again.");
@@ -44,5 +45,5 @@ const bookDeletePost = [
 ];
 
 module.exports = {
-    bookDeletePost
-}
+  bookDeletePost,
+};

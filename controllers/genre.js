@@ -11,14 +11,12 @@ async function newGenreGet(req, res) {
 }
 
 const newGenrePost = [
-  body("genre_name")
-    .trim()
-    .notEmpty().withMessage("Genre name is required.")
-    .isLength({ max: 100 }).withMessage("Genre name must be at most 100 characters long."),
+  body("genre_name").trim().notEmpty().withMessage("Genre name is required.").isLength({ max: 100 }).withMessage("Genre name must be at most 100 characters long."),
 
   body("admin_password")
     .trim()
-    .notEmpty().withMessage("Password is required.")
+    .notEmpty()
+    .withMessage("Password is required.")
     .custom((value) => {
       if (value !== process.env.ADMIN_PASSWORD) {
         throw new Error("Wrong password. Please try again.");
@@ -45,7 +43,8 @@ const newGenrePost = [
 const deleteGenrePost = [
   body("admin_password")
     .trim()
-    .notEmpty().withMessage("Password is required.")
+    .notEmpty()
+    .withMessage("Password is required.")
     .custom((value) => {
       if (value !== process.env.ADMIN_PASSWORD) {
         throw new Error("Wrong password. Please try again.");

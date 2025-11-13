@@ -39,7 +39,7 @@ const editBookPost = [
 
     if (!errors.isEmpty()) {
       const allGenres = await db.getAllGenres();
-      return res.render("./edit-book/edit-book", { book: {...req.body, id: bookId}, genres: allGenres, errors: errors.array(), sourcePage });
+      return res.render("./edit-book/edit-book", { book: { ...req.body, id: bookId }, genres: allGenres, errors: errors.array(), sourcePage });
     }
 
     try {
