@@ -1,4 +1,7 @@
 <div class="books-list">
+  <% if (books.length === 0) { %>
+    <%- include('./book-empty') %>
+  <% } %>
   <% books.forEach(book => { %>
     <div class="book-card">
       <% if (book.image_url) { %>
