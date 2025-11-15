@@ -15,7 +15,7 @@
 
 </div>
 
-<img src="./public/images/project.png" alt="Screenshot of project page" align="center" style="width: 100%;">
+<img src="./public/images/project-img.png" alt="Screenshot of project page" align="center" style="width: 100%;">
 
 ## 🚀 Live Site
 
