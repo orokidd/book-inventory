@@ -1,6 +1,6 @@
 <h1 align="center">
-  Inventory Application 
-  <h4 align="center">A video game inventory application built with Node, Express, EJS, and PostgreSQL</h4>
+  Book Inventory
+  <h4 align="center">A book inventory application built with Node, Express, EJS, and PostgreSQL</h4>
 </h1>
 
 <div align="center">
@@ -20,6 +20,11 @@
 ## 🚀 Live Site
 
 The live site can be viewed [here](https://book-inventory-mgqv.onrender.com/).
+
+
+## 📼 Demo
+
+https://github.com/user-attachments/assets/1c9a342b-1b8c-49b9-9c7c-5818c39aba4a
 
 ## 📝 Project Description
 
